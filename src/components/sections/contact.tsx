@@ -1,10 +1,7 @@
-import { useState } from 'react'
 import { Section } from '@/components/layout/section'
 import { Reveal } from '@/components/layout/reveal'
-import { Button } from '@/components/ui/button'
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-import { Input } from '@/components/ui/input'
-import { Textarea } from '@/components/ui/textarea'
+import { Card, CardContent } from '@/components/ui/card'
+import { Mail, Phone, Linkedin } from 'lucide-react'
 
 type ContactContent = {
   title: string
@@ -18,33 +15,6 @@ type ContactContent = {
 }
 
 export function ContactSection({ content }: { content: ContactContent }) {
-  const [state, setState] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
-
-  async function onSubmit(formData: FormData): Promise<boolean> {
-    setState('loading')
-    try {
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          name: formData.get('name'),
-          email: formData.get('email'),
-          message: formData.get('message')
-        })
-      })
-
-      if (!response.ok) {
-        throw new Error('Request failed')
-      }
-
-      setState('success')
-      return true
-    } catch {
-      setState('error')
-      return false
-    }
-  }
-
   return (
     <Section id="contact" className="pb-28">
       <div className="mx-auto grid max-w-5xl gap-8 md:grid-cols-[1fr_1.2fr] md:items-start">
@@ -58,34 +28,45 @@ export function ContactSection({ content }: { content: ContactContent }) {
         </div>
 
         <Reveal delay={0.3} direction="up">
-        <Card>
-          <CardHeader>
-            <CardTitle>{content.title}</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <form
-              className="space-y-4"
-              onSubmit={async (event) => {
-                event.preventDefault()
-                const form = event.currentTarget
-                const success = await onSubmit(new FormData(form))
-                if (success) {
-                  form.reset()
-                }
-              }}
-            >
-              <Input name="name" placeholder={content.name} required autoComplete="name" />
-              <Input name="email" type="email" placeholder={content.email} required autoComplete="email" />
-              <Textarea name="message" placeholder={content.message} required />
-              <Button type="submit" className="w-full" disabled={state === 'loading'}>
-                {state === 'loading' ? '…' : content.cta}
-              </Button>
+          <Card className="overflow-hidden">
+            <CardContent className="p-8 space-y-6">
+              <div className="flex items-center gap-4">
+                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/10">
+                  <Mail className="h-6 w-6 text-primary" />
+                </div>
+                <div>
+                  <p className="text-sm font-medium text-muted-foreground">Email</p>
+                  <a href="mailto:info@q-intern.de" className="text-lg font-semibold hover:text-primary transition-colors">
+                    info@q-intern.de
+                  </a>
+                </div>
+              </div>
 
-              {state === 'success' ? <p className="text-sm text-primary">{content.success}</p> : null}
-              {state === 'error' ? <p className="text-sm text-foreground/80">{content.error}</p> : null}
-            </form>
-          </CardContent>
-        </Card>
+              <div className="flex items-center gap-4">
+                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/10">
+                  <Phone className="h-6 w-6 text-primary" />
+                </div>
+                <div>
+                  <p className="text-sm font-medium text-muted-foreground">Telefon</p>
+                  <a href="tel:+4915112581446" className="text-lg font-semibold hover:text-primary transition-colors">
+                    +49 (0) 151 12581446
+                  </a>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-4">
+                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/10">
+                  <Linkedin className="h-6 w-6 text-primary" />
+                </div>
+                <div>
+                  <p className="text-sm font-medium text-muted-foreground">LinkedIn</p>
+                  <a href="https://www.linkedin.com/in/mirko-quintern-5a62823a1" target="_blank" rel="noopener noreferrer" className="text-lg font-semibold hover:text-primary transition-colors">
+                    Mirko Quintern
+                  </a>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
         </Reveal>
       </div>
     </Section>
