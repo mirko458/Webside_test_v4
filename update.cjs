@@ -1,4 +1,5 @@
-import { Section } from '@/components/layout/section'
+const fs = require('fs');
+const newCode = `import { Section } from '@/components/layout/section'
 import { Reveal } from '@/components/layout/reveal'
 import { Card, CardContent } from '@/components/ui/card'
 import { Mail, Phone, Linkedin } from 'lucide-react'
@@ -36,8 +37,8 @@ export function ContactSection({ content }: { content: ContactContent }) {
                 </div>
                 <div>
                   <p className="text-sm font-medium text-muted-foreground">Email</p>
-                  <a href="mailto:mail@mirkoquintern.de" className="text-lg font-semibold hover:text-primary transition-colors">
-                    mail@mirkoquintern.de
+                  <a href="mailto:mirko.quintern@gmail.com" className="text-lg font-semibold hover:text-primary transition-colors">
+                    mirko.quintern@gmail.com
                   </a>
                 </div>
               </div>
@@ -48,8 +49,8 @@ export function ContactSection({ content }: { content: ContactContent }) {
                 </div>
                 <div>
                   <p className="text-sm font-medium text-muted-foreground">Telefon</p>
-                  <a href="tel:+4915112581446" className="text-lg font-semibold hover:text-primary transition-colors">
-                    +49 (0) 151 12581446
+                  <a href="tel:+491602796452" className="text-lg font-semibold hover:text-primary transition-colors">
+                    +49 160 27 96452
                   </a>
                 </div>
               </div>
@@ -72,3 +73,5 @@ export function ContactSection({ content }: { content: ContactContent }) {
     </Section>
   )
 }
+`;
+fs.writeFileSync('src/components/sections/contact.tsx', newCode);

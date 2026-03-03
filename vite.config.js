@@ -1,7 +1,7 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 export default defineConfig({
-    base: '/Webside_test_v3/',
+    base: '/Webside_test_v4/',
     plugins: [react()],
     resolve: {
         alias: {

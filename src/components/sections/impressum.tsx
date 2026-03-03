@@ -19,7 +19,7 @@
             <h3 className="mb-2 text-xl font-semibold text-foreground">Kontakt</h3>
             <p>
               Telefon: +49 (0) 151 12581446<br />
-              E-Mail: <a href="mailto:info@q-intern.de" className="text-foreground hover:underline">info@q-intern.de</a>
+              E-Mail: <a href="mailto:mail@mirkoquintern.de" className="text-foreground hover:underline">mail@mirkoquintern.de</a>
             </p>
           </div>
 

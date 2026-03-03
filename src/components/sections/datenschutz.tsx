@@ -26,7 +26,7 @@
               Mirko Quintern<br />
               Rheintalstr. 28<br />
               68723 Schwetzingen<br /><br />
-              E-Mail: <a href="mailto:mirko@q-intern.de" className="text-foreground hover:underline">mirko@q-intern.de</a>
+              E-Mail: <a href="mailto:mail@mirkoquintern.de" className="text-foreground hover:underline">mail@mirkoquintern.de</a>
             </p>
           </div>
 
